@@ -1,4 +1,5 @@
 
+import atexit
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -7,6 +8,37 @@ from pygame.transform import scale
 from pygame.sprite import Sprite, Group
 from pygame import event
 from random import randint
+import numpy as np
+import math
+import statistics
+
+jogadores = 20
+
+
+def dist(a, b):
+    x1 = a.rect.x
+    x2 = b.rect.x
+    y1 = a.rect.y
+    y2 = b.rect.y
+    return math.hypot(x1-x2, y1-y2)
+
+
+def bruto(x):
+    n = len(x)
+    ponto1 = 0
+    ponto2 = 0
+    distmin = 10000000000000000000000  # inicializar com distância muito grande
+    for i in range(0, n-1):  # comparar todos os pares possíveis
+        for j in range(i+1, n-1):
+            if dist(x[i], x[j]) <= distmin:
+                ponto1 = i
+                ponto2 = j
+                distmin = dist(x[i], x[j])
+                print(ponto1, ponto2, distmin)
+    atletas[ponto1].kill()
+    atletas.pop(ponto1)
+    atletas[ponto2].kill()
+    atletas.pop(ponto2)
 
 
 pygame.init()
@@ -17,7 +49,6 @@ largura = 1000
 altura = 600
 tamanhoDaTela = 1000, 600
 
-jogadores = 20
 fonte = pygame.font.SysFont('arial', 40, True, True)
 
 
@@ -38,7 +69,7 @@ class Atleta(Sprite):
             load('images/atleta.png'),
             (60, 60))
         self.rect = self.image.get_rect(
-            center=(randint(0, 950), randint(0, 550)
+            center=(randint(0, 900), randint(0, 500)
                     ))
         self.jogo = 0
         self.direction = 1
@@ -50,60 +81,33 @@ class Atleta(Sprite):
 
     def update(self):
         if(self.jogo == 1):
-
-            if(self.rect.left <= 20 or self.rect.right >= 1000):
+            if(self.rect.left <= 20 or self.rect.right >= 940):
                 self.direction *= -1
-                self.speed_x = randint(0, 5) * self.direction
-            if self.rect.top <= 50 or self.rect.bottom >= 600:
+                self.speed_y = randint(1, 5) * self.direction
+                self.speed_x = randint(1, 5) * self.direction
+                if self.speed_x == 0 and self.speed_y == 0:
+                    self.speed_x = randint(2, 5) * self.direction
+                    self.speed_y = randint(2, 5) * self.direction
+            if self.rect.top <= 50 or self.rect.bottom >= 540:
                 self.direction *= -1
-                self.speed_y = randint(0, 5) * self.direction
+                self.speed_y = randint(1, 5) * self.direction
+                self.speed_x = randint(1, 5) * self.direction
+                if self.speed_x == 0 and self.speed_y == 0:
+                    self.speed_x = randint(2, 5) * self.direction
+                    self.speed_y = randint(2, 5) * self.direction
 
             self.rect.x += self.speed_x
             self.rect.y += self.speed_y
 
 
-atleta1 = Atleta()
-atleta2 = Atleta()
-atleta3 = Atleta()
-atleta4 = Atleta()
-atleta5 = Atleta()
-atleta6 = Atleta()
-atleta7 = Atleta()
-atleta8 = Atleta()
-atleta9 = Atleta()
-atleta10 = Atleta()
-atleta11 = Atleta()
-atleta12 = Atleta()
-atleta13 = Atleta()
-atleta14 = Atleta()
-atleta15 = Atleta()
-atleta16 = Atleta()
-atleta17 = Atleta()
-atleta18 = Atleta()
-atleta19 = Atleta()
-atleta20 = Atleta()
+atletas = []
 grupo_atletas = Group()
-grupo_atletas.add(atleta1)
-grupo_atletas.add(atleta2)
-grupo_atletas.add(atleta3)
-grupo_atletas.add(atleta4)
-grupo_atletas.add(atleta4)
-grupo_atletas.add(atleta5)
-grupo_atletas.add(atleta6)
-grupo_atletas.add(atleta7)
-grupo_atletas.add(atleta8)
-grupo_atletas.add(atleta9)
-grupo_atletas.add(atleta10)
-grupo_atletas.add(atleta11)
-grupo_atletas.add(atleta12)
-grupo_atletas.add(atleta13)
-grupo_atletas.add(atleta14)
-grupo_atletas.add(atleta15)
-grupo_atletas.add(atleta16)
-grupo_atletas.add(atleta17)
-grupo_atletas.add(atleta18)
-grupo_atletas.add(atleta19)
-grupo_atletas.add(atleta20)
+i = 0
+while i <= 19:
+    atletas.append(Atleta())
+    grupo_atletas.add(atletas[i])
+    i = i + 1
+
 
 while True:
     clock.tick(60)
@@ -117,26 +121,14 @@ while True:
             exit()
         if event.type == KEYUP:
             if event.key == K_SPACE:
-                atleta1.playGame()
-                atleta2.playGame()
-                atleta3.playGame()
-                atleta4.playGame()
-                atleta5.playGame()
-                atleta6.playGame()
-                atleta7.playGame()
-                atleta8.playGame()
-                atleta9.playGame()
-                atleta10.playGame()
-                atleta11.playGame()
-                atleta12.playGame()
-                atleta13.playGame()
-                atleta14.playGame()
-                atleta15.playGame()
-                atleta16.playGame()
-                atleta17.playGame()
-                atleta18.playGame()
-                atleta19.playGame()
-                atleta20.playGame()
+                k = 0
+                while k <= 19:
+                    atletas[k].playGame()
+                    k += 1
+            if event.key == K_TAB:
+
+                bruto(atletas)
+                jogadores = jogadores - 2
 
     # Espaco deo siplay
     tela.blit(fundo, (0, 0))
