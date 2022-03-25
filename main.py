@@ -47,14 +47,45 @@ def homepage():
         listaDePreferencias.append(request.form["question3"])
         listaDePreferencias.append(request.form["question4"])
         listaDePreferencias.append(request.form["question5"])
-        return f"{count_inversion(listaDePreferencias)}"
+        # return f"{count_inversion(listaDePreferencias)}"
+        parecer = count_inversion(listaDePreferencias)
+        if parecer == 0:
+            return redirect(url_for("animador"))
+        if parecer > 0 and parecer < 4:
+            return redirect(url_for("inovador"))
+        if parecer > 3 and parecer < 6:
+            return redirect(url_for("mediador"))
+        if parecer > 5 and parecer < 9:
+            return redirect(url_for("empresario"))
+        if parecer > 8 and parecer <= 10:
+            return redirect(url_for("consul"))
     else:
         return render_template("homepage.html")
 
 
-@app.route("/<quention1>")
-def teste(question1):
-    return f"<h1>{listaDePreferencias[0]}<h1>"
+@app.route('/animador')
+def animador():
+    return render_template("animador.html")
+
+
+@app.route('/inovador')
+def inovador():
+    return render_template("inovador.html")
+
+
+@app.route('/mediador')
+def mediador():
+    return render_template("motivador.html")
+
+
+@app.route('/Empresário')
+def empresario():
+    return render_template("empresario.html")
+
+
+@app.route('/consul')
+def consul():
+    return render_template("consul.html")
 
 
 if __name__ == "__main__":
