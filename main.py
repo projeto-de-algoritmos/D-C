@@ -5,10 +5,8 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)  # sempre ao iniciar um site
 
-
 def count_inversion(lst):
     return merge_count_inversion(lst)[1]
-
 
 def merge_count_inversion(lst):
     if len(lst) <= 1:
@@ -18,7 +16,6 @@ def merge_count_inversion(lst):
     right, b = merge_count_inversion(lst[middle:])
     result, c = merge_count_split_inversion(left, right)
     return result, (a + b + c)
-
 
 def merge_count_split_inversion(left, right):
     result = []
@@ -36,7 +33,6 @@ def merge_count_split_inversion(left, right):
     result += left[i:]
     result += right[j:]
     return result, count
-
 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
