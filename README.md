@@ -17,7 +17,7 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
 **Linguagem**: Python, HTML e CSS<br>
-**Framework**: ter o Python e o Flask instalados na máquina, abrir e executar os arquivos de preferência no VSCode. Ao executar o arquivo no VSCode, um localhost será criado, dando acesso ao jogo.
+**Pré-requisito**: ter o Python e o Flask instalados na máquina, abrir e executar os arquivos de preferência no VSCode. Ao executar o arquivo no VSCode, um localhost será criado, dando acesso ao jogo.
 
 ## Uso 
 Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
