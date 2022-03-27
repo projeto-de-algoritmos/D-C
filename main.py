@@ -1,9 +1,11 @@
 from cgitb import html
+from re import I
 from tkinter.messagebox import QUESTION
 from flask import Flask, render_template, request, flash, redirect, url_for
 
 
 app = Flask(__name__)  # sempre ao iniciar um site
+app.config['SECRET_KEY'] = "HASH"
 
 
 def count_inversion(lst):
@@ -47,8 +49,16 @@ def homepage():
         listaDePreferencias.append(request.form["question3"])
         listaDePreferencias.append(request.form["question4"])
         listaDePreferencias.append(request.form["question5"])
-        # return f"{count_inversion(listaDePreferencias)}"
         parecer = count_inversion(listaDePreferencias)
+        n = len(listaDePreferencias)
+        repetidor = 0
+        for i in range(0, n-1):
+            for j in range(i+1, n-1):
+                if listaDePreferencias[i] == listaDePreferencias[j]:
+                    repetidor += 1
+        if repetidor > 0:
+            flash('Todos os campos devem ser dierentes')
+            return redirect(url_for('homepage'))
         if parecer == 0:
             return redirect(url_for("animador"))
         if parecer > 0 and parecer < 4:
@@ -59,6 +69,7 @@ def homepage():
             return redirect(url_for("empresario"))
         if parecer > 8 and parecer <= 10:
             return redirect(url_for("consul"))
+
     else:
         return render_template("homepage.html")
 
