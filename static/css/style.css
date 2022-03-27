@@ -18,8 +18,9 @@ body {
 }
 
 .Grupo{
-    margin: auto;
+    justify-content: center;
     display: flex;
+    vertical-align: middle;
     padding: 1.5rem;
     text-align: center;
 }
@@ -123,4 +124,30 @@ input[type=submit]:hover {
     margin-top: 0rem;
     text-align: center;
     color: #5656EE;
+}
+.headLiner_persona{
+    text-align: center;
+    color: white;
+    margin-top: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.personalidade{
+    width: 50%;
+    display: flex;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    float: left;
+    border-radius: 3rem;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.4);
+}
+.text{
+    color:white;
+    margin-right:15rem;
+    text-align: justify;
+    font-size:2rem;
+}
+.personalidade:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 10px rgba(123, 74, 236, 0.4);
+    display: block;
 }
