@@ -22,7 +22,13 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 ## Uso 
 Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
 
+## Referências
+Utilizamos 2 sites como base para a escolha dos gêneros musicais e personalidades.<br>
+Utilizamos as 5 personalidades referentes aos 5 gêneros musicais com maior percentual.
 
+16Personalities. Tipos de Personalidade. Disponível em:<https://www.16personalities.com/br/descricoes-dos-tipos>. ACesso em: 27 mar. 2022.
+
+Ernani,F. Pesquisas revelam que é possível julgar pessoas pelo gosto musical. Disponível em: <https://www.tenhomaisdiscosqueamigos.com/2021/04/07/pesquisas-julgar-gosto-musical/>. Acesso em: 27 mar. 2022.
 
 
 
