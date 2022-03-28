@@ -10,17 +10,38 @@
 | 17/0161897 | Eduarda Servidio |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Você quer fazer um teste de personalidade que tem como base seu gosto musical.
+Com o MusPersonality, você poderá descobrir isso! Ordene por ordem de gosto os gêneros
+musicais presentes na tela principal e descubra qual personalidade é definida para
+você! 
+
+Utilizamos a ideia do algoritmo de Contagem de Inversões para definir o tipo de 
+personalidade através do gosto musical. <br>
+A partir de uma análise, chegamos a conclusão que os tipos de personalidades estariam ligados a quantidade de inversões referentes a ordem por gosto musical.
+<br> A tabela a seguir defini a quantidade de inversões e a personalidade respectiva: <br>
+
+|Quantidade de Inversão| Personalidade |
+| -- | -- |
+| 0  | Animador |
+| 1 - 3 | Inovador |
+| 4 - 5 | Mediador |
+| 6 - 8 | Empresario |
+| 9 - 10 | Consul |
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
 **Linguagem**: Python, HTML e CSS<br>
-**Pré-requisito**: ter o Python e o Flask instalados na máquina, abrir e executar os arquivos de preferência no VSCode. Ao executar o arquivo no VSCode, um localhost será criado, dando acesso ao jogo.
+**Pré-requisito**: ter o Python e o Flask instalados na máquina, abrir e executar
+ os arquivos de preferência no VSCode. Ao executar o arquivo no VSCode, 
+ um localhost será criado, dando acesso ao jogo.
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+
+Ao executar o arquivo .py e um localhost for criado, o usuário deve ordenar por
+gosto de 1 a 5 os gêneros musicais listados na tela principal. Após isso, a personalidade
+referente a ordenação colocada aparecerá.
 
 ## Referências
 Utilizamos 2 sites como base para a escolha dos gêneros musicais e personalidades.<br>
