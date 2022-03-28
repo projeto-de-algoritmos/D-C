@@ -8,36 +8,32 @@ app = Flask(__name__)  # sempre ao iniciar um site
 app.config['SECRET_KEY'] = "HASH"
 
 
-def count_inversion(lst):
-    return merge_count_inversion(lst)[1]
-
-
-def merge_count_inversion(lst):
-    if len(lst) <= 1:
-        return lst, 0
-    middle = int(len(lst) / 2)
-    left, a = merge_count_inversion(lst[:middle])
-    right, b = merge_count_inversion(lst[middle:])
-    result, c = merge_count_split_inversion(left, right)
-    return result, (a + b + c)
-
-
-def merge_count_split_inversion(left, right):
-    result = []
-    count = 0
+def merge_and_count(left, right):
+    result = list()
     i, j = 0, 0
-    left_len = len(left)
-    while i < left_len and j < len(right):
+    inv_count = 0
+    while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             result.append(left[i])
             i += 1
         else:
             result.append(right[j])
-            count += left_len - i
             j += 1
+            inv_count += (len(left)-i)
     result += left[i:]
     result += right[j:]
-    return result, count
+    return result, inv_count
+
+
+def sort_and_count(array):
+    if len(array) <= 1:
+        return array, 0
+    meio = len(array) // 2
+    left, inv_left = sort_and_count(array[:meio])
+    right, inv_right = sort_and_count(array[meio:])
+    merged, count = merge_and_count(left, right)
+    count += (inv_left + inv_right)
+    return merged, count
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -49,7 +45,7 @@ def homepage():
         listaDePreferencias.append(request.form["question3"])
         listaDePreferencias.append(request.form["question4"])
         listaDePreferencias.append(request.form["question5"])
-        parecer = count_inversion(listaDePreferencias)
+        merge_array, parecer = sort_and_count(listaDePreferencias)
         n = len(listaDePreferencias)
         repetidor = 0
         for i in range(0, n-1):
