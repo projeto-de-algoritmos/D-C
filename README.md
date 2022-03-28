@@ -11,7 +11,7 @@
 
 ## Sobre 
 Você quer fazer um teste de personalidade que tem como base seu gosto musical.
-Com o MusPersonality, você poderá descobrir isso! Ordene por gosto os gêneros
+Com o MusPersonality, você poderá descobrir isso! Numere por gosto os gêneros
 musicais presentes na tela principal e descubra qual personalidade é definida para
 você! 
 
@@ -35,7 +35,7 @@ A tabela a seguir define a quantidade de inversões e a personalidade respectiva
 Figura 1: Tela principal com os gêneros musicais.
 
 ![image](https://user-images.githubusercontent.com/52542729/160498012-94e50588-3c51-43d0-bd0e-3ff8b15e1127.png)
-Figura 2: Exemplo com ordenação com 0 inversões.
+Figura 2: Exemplo com numeração com 0 inversões.
 
 ![image](https://user-images.githubusercontent.com/52542729/160498085-cd0f054d-e4d7-4d2e-828a-787bc57a6f3b.png)
 Figura 3: Página da personalidade Animador vinculado ao screenshot anterior.
@@ -48,7 +48,7 @@ Figura 3: Página da personalidade Animador vinculado ao screenshot anterior.
 
 ## Uso 
 
-Ao executar o arquivo .py e um localhost for criado, o usuário deve ordenar por
+Ao executar o arquivo .py e um localhost for criado, o usuário deve numerar por
 gosto de 1 a 5 os gêneros musicais listados na tela principal. Após isso, a personalidade
 referente a ordenação colocada aparecerá.
 
