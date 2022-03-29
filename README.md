@@ -10,7 +10,7 @@
 | 17/0161897 | Eduarda Servidio |
 
 ## Sobre 
-Você quer fazer um teste de personalidade que tem como base seu gosto musical.
+Você quer fazer um teste de personalidade que tem como base seu gosto musical?
 Com o MusPersonality, você poderá descobrir isso! Numere por gosto os gêneros
 musicais presentes na tela principal e descubra qual personalidade é definida para
 você! 
